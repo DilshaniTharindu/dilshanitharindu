@@ -1,11 +1,15 @@
 # Dilshani & Tharindu — Wedding Invitation
 
-A single-page wedding invitation website (everything, including pictures and music, is inside `index.html`).
+A one-page wedding invitation website, published with GitHub Pages at
+https://dilshanitharindu.github.io/dilshanitharindu/
 
-## Publish with GitHub Pages
-1. Create a new **public** repository on GitHub (e.g. `dilshani-tharindu-wedding`).
-2. Upload `index.html` and `.nojekyll` to the repository (Add file → Upload files → Commit).
-3. Go to **Settings → Pages**, set **Source: Deploy from a branch**, branch **main**, folder **/ (root)**, then **Save**.
-4. After a minute the site is live at `https://YOUR-USERNAME.github.io/dilshani-tharindu-wedding/`.
+- `index.html` — the invitation (the opening poster and venue map are built in)
+- `opening.mp4` / `opening.webm` — the opening film (rendered in Blender)
+- `assets/` — the white lilies and petals, the couple's portrait, the brass lamp, the wax seal, the keepsake card and the music
+- `og.jpg` — the picture shown when the link is shared
 
-To change details (parents' names, dress code, contact numbers), edit the `WEDDING = { ... }` block near the bottom of `index.html`.
+To change details (dress code, contact numbers, the WhatsApp number replies go to), edit the
+`WEDDING = { ... }` block near the bottom of `index.html`.
+
+Personal links: add `?to=Name` to the address to greet a guest by name, e.g.
+`https://dilshanitharindu.github.io/dilshanitharindu/?to=Nimal%20%26%20family`
