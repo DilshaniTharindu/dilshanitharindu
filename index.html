@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#eef5ee">
-<meta name="description" content="You are invited to the wedding of Dilshani & Tharindu - Thursday, 28 January 2027, Asliya Golden Cassandra.">
+<meta name="description" content="You are invited to the wedding of Dilshani & Tharindu - Thursday, 28 January 2027, 8:30 a.m. to 3:30 p.m., Lotus Ballroom, Asliya Golden Cassandra.">
 <meta property="og:title" content="The Wedding of Dilshani & Tharindu">
-<meta property="og:description" content="Poruwa Ceremony - Thursday, 28 January 2027 at 10:30 a.m. - Asliya Golden Cassandra">
+<meta property="og:description" content="Thursday, 28 January 2027 · 8:30 a.m. - 3:30 p.m. · Poruwa ceremony at 10:30 a.m. · Lotus Ballroom, Asliya Golden Cassandra">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://dilshanitharindu.github.io/dilshanitharindu/og.jpg">
 <meta property="og:image:width" content="1200">
@@ -150,7 +150,8 @@ section { position: relative; text-align: center; display: grid; justify-items: 
 .mono text { opacity: 0; transition: opacity 1s ease 1.2s }
 .show .mono .ring { stroke-dashoffset: 0 } .show .mono text { opacity: 1 }
 .hero .bless { font-style: italic; color: var(--jade); font-size: 20px; margin: 0; text-wrap: balance }
-@media (max-width: 380px) { .eyebrow { font-size: 11px; letter-spacing: .2em } .hero .bless { font-size: 18px } }
+@media (max-width: 380px) { .eyebrow { font-size: 11px; letter-spacing: .2em } .hero .bless { font-size: 18px }
+}
 .hero .names { display: grid; justify-items: center; font-size: clamp(64px, 19vw, 92px); margin: 4px 0 }
 .hero .names .amp { font-size: .6em; line-height: .8; margin: -4px 0 }
 .hero .names .of { display: block; font-family: var(--caps); font-weight: 500; font-size: 11px; letter-spacing: .28em; line-height: 1.5; text-transform: uppercase; color: var(--gold); margin: 4px 0 12px }
@@ -186,6 +187,31 @@ section { position: relative; text-align: center; display: grid; justify-items: 
 .frame .bw.tl { left: -74px; top: -104px; width: 56%; --o: 0 0; z-index: 2 } .frame .bw.br { right: -72px; bottom: -100px; width: 56%; --o: 100% 100%; --from: 0 16px; --bd: .5s; z-index: 2 }
 .frame h3 { font-family: var(--caps); font-weight: 600; font-size: 18px; letter-spacing: .16em; color: var(--jade); margin: 6px 0 4px; text-transform: uppercase }
 .row { display: grid; grid-template-columns: 34px 1fr; gap: 12px; align-items: center; text-align: left; width: 100%; max-width: 300px }
+/* highlighted date / time / venue */
+.hl { display: grid; justify-items: center; gap: 2px; width: 100%; max-width: 330px; padding: 14px 14px 16px; border-radius: 14px; text-align: center;
+  background: linear-gradient(180deg, rgba(234,244,237,.95), rgba(255,253,246,.85)); box-shadow: inset 0 0 0 1px rgba(111,158,134,.42), 0 12px 24px -22px rgba(29,56,46,.8) }
+.hl svg { width: 30px; height: 30px; color: var(--gold); margin-bottom: 2px }
+.hl svg .ic { stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset 1.4s ease var(--d, 0s) }
+.show .hl svg .ic { stroke-dashoffset: 0 }
+.hl > b { font-family: var(--caps); font-weight: 600; font-size: 10px; letter-spacing: .28em; padding-left: .28em; color: var(--celadon-deep); text-transform: uppercase }
+.hl strong { font-family: var(--display); font-weight: 600; font-size: clamp(20px, 6vw, 24px); line-height: 1.25; color: var(--jade); font-variant-numeric: lining-nums }
+.hl > span { font-style: italic; font-size: 18px; color: var(--ink) }
+.poruwa { display: inline-flex; flex-wrap: wrap; justify-content: center; align-items: baseline; gap: 4px 10px; margin: 8px 0 0; padding: 7px 16px; border-radius: 999px;
+  background: linear-gradient(135deg, #fff7e2, #f4e5c0); box-shadow: inset 0 0 0 1px rgba(176,138,56,.6), 0 8px 16px -12px rgba(169,132,50,.9);
+  font-family: var(--caps); font-weight: 600; font-size: 10.5px; letter-spacing: .2em; text-transform: uppercase; color: var(--jade) }
+.poruwa b { font-family: var(--display); font-weight: 700; font-size: 20px; letter-spacing: 0; text-transform: none; color: #8a6a22; font-variant-numeric: lining-nums }
+.hero-when { display: grid; justify-items: center; gap: 6px; width: 100%; max-width: 330px; margin-top: 12px; padding: 14px 14px 16px; border-radius: 16px;
+  background: linear-gradient(180deg, rgba(255,253,246,.94), rgba(236,245,238,.94)); box-shadow: inset 0 0 0 1px rgba(176,138,56,.45), 0 16px 30px -24px rgba(29,56,46,.6) }
+.hw-time { margin: 0; font-family: var(--display); font-weight: 600; font-size: 24px; line-height: 1.2; color: var(--jade); font-variant-numeric: lining-nums }
+.hw-time small { display: block; font-family: var(--caps); font-weight: 600; font-size: 10px; letter-spacing: .28em; padding-left: .28em; color: var(--celadon-deep); text-transform: uppercase }
+.hero-when .poruwa { margin: 2px 0 4px }
+.hw-venue { margin: 0; display: grid; justify-items: center; gap: 1px; font-style: italic; font-size: 17px; color: var(--ink) }
+.hw-venue b { font-style: normal; font-family: var(--caps); font-weight: 600; font-size: 13px; letter-spacing: .2em; padding-left: .2em; color: var(--jade); text-transform: uppercase }
+.date-line { margin: 2px 0 6px; font-family: var(--display); font-weight: 600; font-size: clamp(25px, 7.6vw, 32px); line-height: 1.2; color: var(--jade); text-wrap: balance }
+.venue-card { display: grid; justify-items: center; gap: 2px; width: 100%; max-width: 340px; padding: 16px 16px 18px; border-radius: 16px; text-align: center;
+  background: linear-gradient(180deg, rgba(255,253,246,.95), rgba(236,245,238,.95)); box-shadow: inset 0 0 0 1px rgba(176,138,56,.5), 0 16px 30px -24px rgba(29,56,46,.6) }
+.venue-card > b { font-family: var(--caps); font-weight: 600; font-size: 10px; letter-spacing: .28em; padding-left: .28em; color: var(--celadon-deep); text-transform: uppercase }
+.venue-hall { margin: 0; font-family: var(--script); font-size: clamp(40px, 11.5vw, 50px); line-height: 1.15; color: var(--jade); padding: 0 .2em }
 .row svg { width: 34px; height: 34px; color: var(--gold) }
 .row svg .ic { stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset 1.4s ease var(--d, 0s) }
 .show .row svg .ic { stroke-dashoffset: 0 }
@@ -198,7 +224,7 @@ section { position: relative; text-align: center; display: grid; justify-items: 
 .wreath-wrap .bw.tl { left: -42%; top: -30%; width: 78%; --o: 0 0; z-index: 1 }
 .wreath-wrap { margin-bottom: 34px }
 .wreath-wrap .bw.swag { left: -27%; bottom: -27%; width: 154%; --o: 50% 100%; --from: 0 14px; --amp: .6deg; --bd: .5s; z-index: 2 }
-.venue-addr { font-family: var(--caps); font-size: 10.5px; letter-spacing: .24em; text-transform: uppercase; color: var(--muted); margin: -6px 0 2px }
+.venue-addr { font-family: var(--caps); font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); margin: 2px 0 0 }
 .wreath-wrap .bloom { position: absolute; width: 22%; height: auto; opacity: 0; scale: .4; rotate: -40deg; transition: opacity 1s ease, scale 1.2s cubic-bezier(.3,1.5,.5,1), rotate 1.4s ease; transition-delay: var(--bd) }
 .show .wreath-wrap .bloom { opacity: 1; scale: 1; rotate: 0deg }
 .wreath-wrap .map { position: absolute; inset: 11.4%; border-radius: 50%; display: block; -webkit-tap-highlight-color: transparent;
@@ -210,7 +236,7 @@ section { position: relative; text-align: center; display: grid; justify-items: 
 @keyframes ping { 0% { scale: .25; opacity: .9 } 80%, 100% { scale: 1.7; opacity: 0 } }
 .wreath-wrap .map:active { scale: .98 }
 .map-credit { font-family: var(--caps); font-size: 8.5px; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); opacity: .75; margin: -8px 0 0 }
-.venue-name { font-family: var(--display); font-weight: 600; font-size: 28px; color: var(--jade); margin: 0 }
+.venue-name { font-family: var(--display); font-weight: 600; font-size: clamp(22px, 6.4vw, 26px); color: var(--jade); margin: 0 }
 
 /* animated buttons */
 .btn { position: relative; overflow: hidden; isolation: isolate; display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 14px 26px; border-radius: 999px; cursor: pointer; text-decoration: none;
@@ -281,7 +307,12 @@ section { position: relative; text-align: center; display: grid; justify-items: 
 .cal-alt a { color: var(--jade); text-underline-offset: 3px }
 
 /* ---- light the lamp ---- */
-body { overflow-x: hidden } @supports (overflow: clip) { body { overflow-x: clip } }
+/* no sideways scrolling on phones: the page is exactly as wide as the screen and decorations are clipped at its edges */
+html, body { max-width: 100%; overflow-x: hidden; overscroll-behavior-x: none }
+@supports (overflow: clip) { html, body { overflow-x: clip } }
+.page { position: relative; width: 100%; overflow-x: hidden }
+@supports (overflow: clip) { .page { overflow-x: clip } }
+html { touch-action: pan-y pinch-zoom }
 #lamp::before { content: ""; position: absolute; left: 50%; top: 58%; width: min(100vw, 900px); aspect-ratio: 1; translate: -50% -50%; border-radius: 50%; pointer-events: none; z-index: -1;
   background: radial-gradient(closest-side, rgba(255,214,150,.5), rgba(255,206,140,.18) 46%, rgba(255,206,140,0) 72%); opacity: var(--lit, 0); transition: opacity 1.4s ease }
 .lamp-stage { display: block; padding: 0; border: 0; background: none; font: inherit; color: inherit; -webkit-appearance: none; appearance: none; position: relative; width: min(66vw, 280px); aspect-ratio: 720 / 1358; margin: 0 0 34px; cursor: pointer; outline: none; -webkit-tap-highlight-color: transparent; touch-action: manipulation }
@@ -336,6 +367,12 @@ body { overflow-x: hidden } @supports (overflow: clip) { body { overflow-x: clip
 .lamp-flowers { position: absolute; left: -34%; right: -34%; bottom: -10%; z-index: 2; pointer-events: none }
 .lamp-stage .lamp-flowers img { position: static; display: block; width: 100%; height: auto; inset: auto }
 
+/* small phones: a little more room inside the cards so the Poruwa time stays on one line */
+@media (max-width: 380px) {
+  .poruwa { letter-spacing: .12em; padding: 7px 12px; gap: 4px 8px } .poruwa b { font-size: 18px }
+  .frame { padding-left: 14px; padding-right: 14px } .hl { padding-left: 8px; padding-right: 8px }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto }
   *, *::before, *::after { animation: none !important; transition: none !important }
@@ -365,6 +402,7 @@ body { overflow-x: hidden } @supports (overflow: clip) { body { overflow-x: clip
 
 </div>
 
+<div class="page">
 <main>
   <section class="hero reveal" id="top">
     <div class="bw garland" aria-hidden="true"><img src="assets/lily_garland.webp" data-img="garland" decoding="async" alt=""></div>
@@ -377,6 +415,11 @@ body { overflow-x: hidden } @supports (overflow: clip) { body { overflow-x: clip
     <p class="lede ln">request the honour of your presence as they begin their life together</p>
     <div class="datebar ln" aria-label="Thursday 28 January 2027"><span>Thursday</span><strong>28</strong><span>January</span></div>
     <p class="yr ln">2027</p>
+    <div class="hero-when ln">
+      <p class="hw-time"><small>From</small>8:30 a.m. &ndash; 3:30 p.m.</p>
+      <p class="poruwa">Poruwa Ceremony <b>10:30 a.m.</b></p>
+      <p class="hw-venue"><b>Lotus Ballroom</b>Asliya Golden Cassandra</p>
+    </div>
     <a class="cue ln" href="#date">Scroll<i></i></a>
     <div class="bw bl" aria-hidden="true"><img src="assets/lily_corner_bl.webp" data-img="cbl" loading="lazy" decoding="async" alt=""></div><div class="bw br" aria-hidden="true"><img src="assets/lily_corner_br.webp" data-img="cbr" loading="lazy" decoding="async" alt=""></div>
   </section>
@@ -385,7 +428,7 @@ body { overflow-x: hidden } @supports (overflow: clip) { body { overflow-x: clip
     <div class="blossom-rule ln" aria-hidden="true"><img src="assets/lily_small.webp" data-img="small" decoding="async" alt=""></div>
     <p class="eyebrow ln">The big day</p>
     <h2 class="script-h ln">Save the Date</h2>
-    <p class="lede ln">Thursday, 28th January 2027</p>
+    <p class="date-line ln">Thursday, 28th January 2027</p>
     <div class="countdown ln" role="timer" aria-live="off">
       <div><strong id="cdD">--</strong><small>Days</small></div>
       <div><strong id="cdH">--</strong><small>Hours</small></div>
@@ -401,11 +444,10 @@ body { overflow-x: hidden } @supports (overflow: clip) { body { overflow-x: clip
       <div class="bw br" aria-hidden="true"><img src="assets/lily_corner_br.webp" data-img="cbr" loading="lazy" decoding="async" alt=""></div>
       <p class="eyebrow ln">Celebrate with us</p>
       <h2 class="script-h ln">The Ceremony</h2>
-      <h3 class="ln">Poruwa Ceremony</h3>
-      <div class="row ln"><svg viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true"><path class="ic" pathLength="1" d="M6 9h22v19H6zM6 14h22M12 5v6M22 5v6"/><path class="ic" pathLength="1" style="--d:.4s" d="M12 19h2M16 19h2M20 19h2M12 23h2M16 23h2"/></svg><div><b>Date</b><span>Thursday, 28 January 2027</span></div></div>
-      <div class="row ln"><svg viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true"><circle class="ic" pathLength="1" cx="17" cy="17" r="11.5"/><path class="ic" pathLength="1" style="--d:.5s" d="M17 10v7l5 3"/></svg><div><b>Auspicious time</b><span>10:30 in the morning</span></div></div>
-      <div class="row ln"><svg viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true"><path class="ic" pathLength="1" d="M17 30s-9-8.5-9-15a9 9 0 0 1 18 0c0 6.5-9 15-9 15z"/><circle class="ic" pathLength="1" style="--d:.5s" cx="17" cy="15" r="3.2"/></svg><div><b>Venue</b><span>Asliya Golden Cassandra</span></div></div>
-      <div class="row ln" id="dressRow" hidden><svg viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true"><path class="ic" pathLength="1" d="M12 5l5 4 5-4 7 5-4 5v14H9V15l-4-5z"/></svg><div><b>Dress code</b><span id="dressCode"></span></div></div>
+      <div class="hl ln"><svg viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true"><path class="ic" pathLength="1" d="M6 9h22v19H6zM6 14h22M12 5v6M22 5v6"/><path class="ic" pathLength="1" style="--d:.4s" d="M12 19h2M16 19h2M20 19h2M12 23h2M16 23h2"/></svg><b>Date</b><strong>Thursday, 28 January 2027</strong></div>
+      <div class="hl ln"><svg viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true"><circle class="ic" pathLength="1" cx="17" cy="17" r="11.5"/><path class="ic" pathLength="1" style="--d:.5s" d="M17 10v7l5 3"/></svg><b>Time</b><strong>8:30 a.m. &ndash; 3:30 p.m.</strong><p class="poruwa">Poruwa Ceremony <b>10:30 a.m.</b></p></div>
+      <div class="hl ln"><svg viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true"><path class="ic" pathLength="1" d="M17 30s-9-8.5-9-15a9 9 0 0 1 18 0c0 6.5-9 15-9 15z"/><circle class="ic" pathLength="1" style="--d:.5s" cx="17" cy="15" r="3.2"/></svg><b>Venue</b><strong>Lotus Ballroom</strong><span>Asliya Golden Cassandra</span></div>
+      <div class="hl ln" id="dressRow" hidden><svg viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true"><path class="ic" pathLength="1" d="M12 5l5 4 5-4 7 5-4 5v14H9V15l-4-5z"/></svg><b>Dress code</b><strong id="dressCode"></strong></div>
       <span class="glare" aria-hidden="true"></span>
       <a class="btn ln" id="calLink" target="_blank" rel="noopener"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><rect x="2" y="3" width="12" height="11" rx="1.5"/><path d="M2 6.5h12M5 1.5v3M11 1.5v3M8 8.5v3.5M6.2 10.2h3.6"/></svg>Add to Calendar</a>
       <p class="cal-alt ln" id="calAlt">or <a id="icsLink">Apple / Outlook calendar</a></p>
@@ -417,13 +459,17 @@ body { overflow-x: hidden } @supports (overflow: clip) { body { overflow-x: clip
     <h2 class="script-h ln">The Venue</h2>
     <div class="wreath-wrap ln">
       <svg class="ring" viewBox="-50 -50 100 100" aria-hidden="true"><circle pathLength="1" r="48" fill="rgba(255,253,246,.7)" stroke="#b08a38" stroke-width=".6"/><circle pathLength="1" r="45" fill="none" stroke="#d6bc76" stroke-width=".35"/></svg>
-      <a class="map" id="mapCircle" target="_blank" rel="noopener" aria-label="Open Asliya Golden Cassandra in Google Maps"><img data-img="map" alt="Map showing Asliya Golden Cassandra on Dambokka-Katupitiya Road"><span class="ping" aria-hidden="true"></span></a>
+      <a class="map" id="mapCircle" target="_blank" rel="noopener" aria-label="Open Asliya Golden Cassandra (Lotus Ballroom) in Google Maps"><img data-img="map" alt="Map showing Asliya Golden Cassandra on Dambokka-Katupitiya Road"><span class="ping" aria-hidden="true"></span></a>
       <div class="bw tl" aria-hidden="true"><img src="assets/lily_corner_tl.webp" data-img="ctl" loading="lazy" decoding="async" alt=""></div>
       <div class="bw swag" aria-hidden="true"><img src="assets/lily_garland.webp" data-img="garland" decoding="async" alt=""></div>
     </div>
     <p class="map-credit ln">Map © Google · tap to open</p>
-    <p class="venue-name ln">Asliya Golden Cassandra</p>
-    <p class="venue-addr ln">Dambokka &ndash; Katupitiya Road (B87)</p>
+    <div class="venue-card ln">
+      <b>The venue</b>
+      <p class="venue-hall">Lotus Ballroom</p>
+      <p class="venue-name">Asliya Golden Cassandra</p>
+      <p class="venue-addr">Dambokka &ndash; Katupitiya Road (B87)</p>
+    </div>
     <p class="lede ln">We would be delighted to welcome you there.</p>
     <a class="btn solid ln" id="mapLink" target="_blank" rel="noopener"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M8 14.5s-4.6-4.3-4.6-7.6a4.6 4.6 0 0 1 9.2 0c0 3.3-4.6 7.6-4.6 7.6z"/><circle cx="8" cy="6.9" r="1.6"/></svg>Get Directions</a>
     <button class="linkish ln" id="copyAddr" type="button">Copy the venue address</button>
@@ -484,6 +530,7 @@ body { overflow-x: hidden } @supports (overflow: clip) { body { overflow-x: clip
     <div class="bw bottom" aria-hidden="true"><img src="assets/lily_long.webp" data-img="long" loading="lazy" decoding="async" alt=""></div>
   </section>
 </main>
+</div>
 
 <div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheetTitle" hidden>
   <div class="sheet-card">
@@ -510,8 +557,10 @@ body { overflow-x: hidden } @supports (overflow: clip) { body { overflow-x: clip
 (function () {
   /* ---------------- details (edit here) ---------------- */
   const WEDDING = {
-    startISO: '2027-01-28T10:30:00+05:30',
-    endISO: '2027-01-28T13:30:00+05:30',
+    startISO: '2027-01-28T08:30:00+05:30',     // the celebration: 8:30 a.m. to 3:30 p.m.
+    endISO: '2027-01-28T15:30:00+05:30',
+    poruwa: '10:30 a.m.',                      // the Poruwa ceremony
+    hall: 'Lotus Ballroom',
     venue: 'Asliya Golden Cassandra',
     address: 'Dambokka – Katupitiya Road (B87)',
     rsvpPhone: '',               // e.g. '+94771234567' – replies then go straight to this WhatsApp number
@@ -564,7 +613,7 @@ body { overflow-x: hidden } @supports (overflow: clip) { body { overflow-x: clip
   if (WEDDING.dressCode) { $('#dressRow').hidden = false; $('#dressCode').textContent = WEDDING.dressCode; }
   if (WEDDING.contacts.length) { const box = $('#contacts'); box.hidden = false; WEDDING.contacts.forEach(c => { const a = document.createElement('a'); a.className = 'btn'; a.href = 'tel:' + c.phone.replace(/\s+/g, ''); a.textContent = 'Call ' + c.name; box.appendChild(a); }); }
   const gcal = d => new Date(d).toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, '');
-  $('#calLink').href = 'https://calendar.google.com/calendar/render?action=TEMPLATE&text=' + encodeURIComponent('Dilshani & Tharindu – Poruwa Ceremony') + '&dates=' + gcal(WEDDING.startISO) + '/' + gcal(WEDDING.endISO) + '&details=' + encodeURIComponent('With the blessings of the Noble Triple Gem, you are invited to the wedding of Dilshani & Tharindu.') + '&location=' + encodeURIComponent(WEDDING.venue);
+  $('#calLink').href = 'https://calendar.google.com/calendar/render?action=TEMPLATE&text=' + encodeURIComponent('Wedding of Dilshani & Tharindu') + '&dates=' + gcal(WEDDING.startISO) + '/' + gcal(WEDDING.endISO) + '&details=' + encodeURIComponent('8:30 a.m. – 3:30 p.m. · Poruwa ceremony at ' + WEDDING.poruwa + '. With the blessings of the Noble Triple Gem, you are invited to the wedding of Dilshani & Tharindu.') + '&location=' + encodeURIComponent(WEDDING.hall + ', ' + WEDDING.venue + ', ' + WEDDING.address);
   (() => { const m = $('#mapCircle'); // safety net: once the map has been on screen a moment, make sure it shows
     if (!('IntersectionObserver' in window)) return m.classList.add('on');
     const mo = new IntersectionObserver(es => { if (es.some(e => e.isIntersecting)) { mo.disconnect(); setTimeout(() => m.classList.add('on'), 2600); } });
@@ -574,7 +623,7 @@ body { overflow-x: hidden } @supports (overflow: clip) { body { overflow-x: clip
   function toast(msg) { const t = $('#toast'); t.textContent = msg; t.classList.add('show'); clearTimeout(toast.h); toast.h = setTimeout(() => t.classList.remove('show'), 2400); }
   const buzz = p => { try { navigator.vibrate && navigator.vibrate(p) } catch (e) {} };
   $('#copyAddr').addEventListener('click', async () => {
-    const t = WEDDING.venue + ', ' + WEDDING.address;
+    const t = WEDDING.hall + ', ' + WEDDING.venue + ', ' + WEDDING.address;
     try { await navigator.clipboard.writeText(t); toast('Venue address copied'); } catch (e) { toast(t); }
   });
   // keep the card: the finished invitation as a picture (opens in a new tab inside previews, downloads on the real site)
@@ -597,7 +646,7 @@ body { overflow-x: hidden } @supports (overflow: clip) { body { overflow-x: clip
 
   const BASE = WEDDING.shareUrl || ((() => { try { return window.top === window.self } catch (e) { return false } })() && /^https?:/.test(location.href) ? location.href.split(/[?#]/)[0] : '');
   const inviteLink = name => BASE + (name ? '?to=' + encodeURIComponent(name) : '');
-  const inviteText = name => (name ? 'Dear ' + name + ', you' : 'You') + ' are warmly invited to the wedding of Dilshani & Tharindu – Thursday, 28 January 2027 at Asliya Golden Cassandra. Open your invitation: ';
+  const inviteText = name => (name ? 'Dear ' + name + ', you' : 'You') + ' are warmly invited to the wedding of Dilshani & Tharindu – Thursday, 28 January 2027, 8:30 a.m. – 3:30 p.m. (Poruwa ceremony at 10:30 a.m.), Lotus Ballroom, Asliya Golden Cassandra. Open your invitation: ';
   if (BASE) {
     const sheet = $('#sheet'), gn = $('#guestName');
     const sync = () => { const n = gn.value.replace(/\s+/g, ' ').trim(); $('#waShare').href = 'https://wa.me/?text=' + encodeURIComponent(inviteText(n) + inviteLink(n)); };
@@ -633,8 +682,8 @@ body { overflow-x: hidden } @supports (overflow: clip) { body { overflow-x: clip
     const z = d => new Date(d).toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, '');
     const ics = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//Dilshani and Tharindu//Wedding//EN', 'CALSCALE:GREGORIAN', 'BEGIN:VEVENT',
       'UID:dilshani-tharindu-20270128@invitation', 'DTSTAMP:' + z(Date.now()), 'DTSTART:' + z(WEDDING.startISO), 'DTEND:' + z(WEDDING.endISO),
-      'SUMMARY:Dilshani & Tharindu – Poruwa Ceremony', 'LOCATION:' + WEDDING.venue,
-      'DESCRIPTION:With the blessings of the Noble Triple Gem\\, you are invited to the wedding of Dilshani & Tharindu.',
+      'SUMMARY:Wedding of Dilshani & Tharindu', 'LOCATION:' + [WEDDING.hall, WEDDING.venue, WEDDING.address].join('\\, '),
+      'DESCRIPTION:8:30 a.m. – 3:30 p.m. · Poruwa ceremony at ' + WEDDING.poruwa + '. With the blessings of the Noble Triple Gem\\, you are invited to the wedding of Dilshani & Tharindu.',
       'BEGIN:VALARM', 'TRIGGER:-P1D', 'ACTION:DISPLAY', 'DESCRIPTION:Dilshani & Tharindu – the wedding is tomorrow', 'END:VALARM',
       'END:VEVENT', 'END:VCALENDAR'].join('\r\n');
     // a calendar file only downloads on the real site; inside a preview frame the line is left out
@@ -744,7 +793,7 @@ body { overflow-x: hidden } @supports (overflow: clip) { body { overflow-x: clip
   function rsvpText(v) {
     const n = rName.value.replace(/\s+/g, ' ').trim(), w = rWish.value.trim(), c = R.count;
     let t = 'Dear Dilshani & Tharindu,\n';
-    if (v === 'yes') t += (n ? n + ' joyfully accepts' : 'I joyfully accept') + ' your invitation to the Poruwa Ceremony on Thursday, 28 January 2027 at ' + WEDDING.venue + '.' + (c > 1 ? ' We will be ' + c + ' guests.' : '');
+    if (v === 'yes') t += (n ? n + ' joyfully accepts' : 'I joyfully accept') + ' your invitation to the wedding on Thursday, 28 January 2027 (Poruwa ceremony at ' + WEDDING.poruwa + ') at the ' + WEDDING.hall + ', ' + WEDDING.venue + '.' + (c > 1 ? ' We will be ' + c + ' guests.' : '');
     else t += (n ? n + ' regretfully cannot' : 'I regretfully cannot') + ' be with you on Thursday, 28 January 2027' + (n ? ', but sends' : ', but send') + ' warm wishes for your wedding day.';
     if (w) t += '\n\n' + w;
     return t;
