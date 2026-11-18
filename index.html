@@ -317,10 +317,13 @@ html { touch-action: pan-y pinch-zoom }
   background: radial-gradient(closest-side, rgba(255,214,150,.5), rgba(255,206,140,.18) 46%, rgba(255,206,140,0) 72%); opacity: var(--lit, 0); transition: opacity 1.4s ease }
 .lamp-stage { display: block; padding: 0; border: 0; background: none; font: inherit; color: inherit; -webkit-appearance: none; appearance: none; position: relative; width: min(66vw, 280px); aspect-ratio: 720 / 1358; margin: 0 0 34px; cursor: pointer; outline: none; -webkit-tap-highlight-color: transparent; touch-action: manipulation }
 .lamp-stage:focus-visible { box-shadow: 0 0 0 2px var(--gold-soft); border-radius: 16px }
+.lamp-stage.ln, .show .lamp-stage.ln { filter: none }
+.lamp-stage.ln { transition: opacity .9s ease, transform 1s cubic-bezier(.2,.8,.2,1); transition-delay: .1s; will-change: opacity, transform }
 .lamp-stage img, .lamp-fx { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; user-select: none }
 .lamp-stage img.lit { opacity: var(--lit, 0); transition: opacity 1.2s ease }
 .lamp-halo { position: absolute; left: 50%; top: 47%; width: 150%; aspect-ratio: 1; translate: -50% -50%; border-radius: 50%; pointer-events: none;
-  background: radial-gradient(closest-side, rgba(255,226,160,.75), rgba(255,200,120,.28) 42%, rgba(255,190,110,0) 70%); opacity: var(--lit, 0); transition: opacity 1.2s ease; animation: halo 3.6s ease-in-out infinite }
+  background: radial-gradient(closest-side, rgba(255,226,160,.75), rgba(255,200,120,.28) 42%, rgba(255,190,110,0) 70%); opacity: var(--lit, 0); transition: opacity 1.2s ease; animation: halo 3.6s ease-in-out infinite paused }
+.lamp-stage.glowing .lamp-halo { animation-play-state: running }
 @keyframes halo { 0%,100% { scale: 1 } 50% { scale: 1.06 } }
 .lamp-tip { display: inline-flex; align-items: center; gap: 8px; margin: 0; padding: 11px 20px; border: 1px solid rgba(176,138,56,.5); border-radius: 999px; background: rgba(255,253,246,.75); box-shadow: 0 8px 20px -14px rgba(169,132,50,.8); cursor: pointer; -webkit-tap-highlight-color: transparent; font-family: var(--caps); font-size: 11px; letter-spacing: .26em; text-transform: uppercase; color: var(--gold); animation: breathe 2.6s ease-in-out infinite }
 .lamp-tip i { width: 7px; height: 7px; border-radius: 50%; background: radial-gradient(circle, #fff6d6, #f0b54a 60%, rgba(240,181,74,0) 72%); box-shadow: 0 0 10px 3px rgba(255,190,90,.6) }
@@ -504,8 +507,8 @@ html { touch-action: pan-y pinch-zoom }
     <p class="lede ln">In our tradition every blessed beginning starts with the light of the oil lamp. Touch the lamp to light it and send your blessings.</p>
     <button class="lamp-stage ln" id="lampStage" type="button" aria-label="Light the oil lamp to send your blessings">
       <span class="lamp-halo" aria-hidden="true"></span>
-      <img class="unlit" src="assets/lamp_unlit.webp" data-img="lampUnlit" loading="lazy" decoding="async" alt="A traditional Sri Lankan brass oil lamp crowned with a rooster">
-      <img class="lit" src="assets/lamp_lit.webp" data-img="lampLit" loading="lazy" decoding="async" alt="" aria-hidden="true">
+      <img class="unlit" src="assets/lamp_unlit.webp" data-img="lampUnlit" fetchpriority="low" decoding="async" alt="A traditional Sri Lankan brass oil lamp crowned with a rooster">
+      <img class="lit" src="assets/lamp_lit.webp" data-img="lampLit" fetchpriority="low" decoding="async" alt="" aria-hidden="true">
       <canvas class="lamp-fx" aria-hidden="true"></canvas>
       <span class="lamp-flowers" aria-hidden="true"><img src="assets/lily_long.webp" data-img="long" loading="lazy" decoding="async" alt=""></span>
     </button>
@@ -697,7 +700,11 @@ html { touch-action: pan-y pinch-zoom }
   const setNum = (el, v) => { if (el.textContent === v) return; el.textContent = v; if (reduce) return; el.classList.remove('flip'); void el.offsetWidth; el.classList.add('flip'); };
   function tick() {
     let ms = target - Date.now();
-    if (ms <= 0) { $('.countdown').hidden = true; $('#cdDone').hidden = false; return; }
+    if (ms <= 0) {   // on the day: "Today is the day."; once the celebration is over: a thank-you
+      $('.countdown').hidden = true; const d = $('#cdDone'); d.hidden = false;
+      if (Date.now() > new Date(WEDDING.endISO).getTime()) d.textContent = 'Thank you for celebrating with us.';
+      return;
+    }
     const d = Math.floor(ms / 864e5); ms -= d * 864e5; const h = Math.floor(ms / 36e5); ms -= h * 36e5; const m = Math.floor(ms / 6e4); ms -= m * 6e4; const s = Math.floor(ms / 1e3);
     setNum($('#cdD'), String(d)); setNum($('#cdH'), pad(h)); setNum($('#cdM'), pad(m)); setNum($('#cdS'), pad(s));
   }
@@ -830,13 +837,18 @@ html { touch-action: pan-y pinch-zoom }
   const wicks = LAMP.wicks.map((w, i) => ({ ...w, i, t: 0, lit: false, p1: Math.random() * 9, p2: Math.random() * 9, p3: Math.random() * 9 }));
   let lampLoop = false, lampSeen = false, embers = [], lampW = 0, lampH = 0, audio = null;
   const lampLitAll = () => wicks.every(w => w.lit);
-  function lampSize() { const r = lampStage.getBoundingClientRect(), dpr = Math.min(2, window.devicePixelRatio || 1); lampW = r.width; lampH = r.height; lampCv.width = lampW * dpr; lampCv.height = lampH * dpr; lx.setTransform(dpr, 0, 0, dpr, 0, 0); }
+  function lampSize() {
+    const r = lampStage.getBoundingClientRect(), dpr = Math.min(2, window.devicePixelRatio || 1);
+    const w = Math.round(r.width), h = Math.round(r.height), cw = Math.round(w * dpr), ch = Math.round(h * dpr);
+    if (!w || (w === lampW && h === lampH && lampCv.width === cw && lampCv.height === ch)) return;   // unchanged: keep the flames on screen
+    lampW = w; lampH = h; lampCv.width = cw; lampCv.height = ch; lx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
   function lampNote(show) {
     const el = $('#lampNote');
     el.textContent = show ? 'May the light of the Noble Triple Gem guide Dilshani & Tharindu always.' + (GUEST ? ' Thank you for your blessing, ' + GUEST + '.' : ' Thank you for your blessing.') : '';
     el.classList.toggle('on', !!show); $('#lampTip').hidden = !!show;
   }
-  function setLitLevel() { const k = wicks.filter(w => w.lit).length / wicks.length; $('#lamp').style.setProperty('--lit', k.toFixed(3)); lampStage.style.setProperty('--lit', k.toFixed(3)); }
+  function setLitLevel() { const k = wicks.filter(w => w.lit).length / wicks.length; $('#lamp').style.setProperty('--lit', k.toFixed(3)); lampStage.style.setProperty('--lit', k.toFixed(3)); lampStage.classList.toggle('glowing', k > 0); }
   function chime() { // a small temple bell, made on the spot
     try {
       audio = audio || new (window.AudioContext || window.webkitAudioContext)();
